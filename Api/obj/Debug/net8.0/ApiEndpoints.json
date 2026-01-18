@@ -29,7 +29,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Models.EggType",
+        "Type": "Application.DTOs.EggTypeCreateRequest",
         "IsRequired": true
       }
     ],

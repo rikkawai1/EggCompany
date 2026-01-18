@@ -51,3 +51,5 @@ D:\LapTrinh\DoAnTotNghiep\EggCompany\Api\obj\Debug\net8.0\refint\Api.dll
 D:\LapTrinh\DoAnTotNghiep\EggCompany\Api\obj\Debug\net8.0\Api.pdb
 D:\LapTrinh\DoAnTotNghiep\EggCompany\Api\obj\Debug\net8.0\Api.genruntimeconfig.cache
 D:\LapTrinh\DoAnTotNghiep\EggCompany\Api\obj\Debug\net8.0\ref\Api.dll
+D:\LapTrinh\DoAnTotNghiep\EggCompany\Api\bin\Debug\net8.0\AutoMapper.dll
+D:\LapTrinh\DoAnTotNghiep\EggCompany\Api\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

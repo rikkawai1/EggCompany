@@ -1,4 +1,5 @@
-﻿using Application.Services;
+﻿using Application.DTOs;
+using Application.Services;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,7 +26,7 @@ namespace Api.Controllers
 
         // POST: api/EggType
         [HttpPost]
-        public async Task<ActionResult<EggType>> Create([FromBody] EggType request)
+        public async Task<ActionResult<EggType>> Create([FromBody] EggTypeCreateRequest request)
         {
             if (request == null)
                 return BadRequest();

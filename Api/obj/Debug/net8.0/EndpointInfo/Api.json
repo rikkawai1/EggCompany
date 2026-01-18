@@ -50,17 +50,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EggType"
+                "$ref": "#/components/schemas/EggTypeCreateRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/EggType"
+                "$ref": "#/components/schemas/EggTypeCreateRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/EggType"
+                "$ref": "#/components/schemas/EggTypeCreateRequest"
               }
             }
           }
@@ -215,6 +215,20 @@
             "items": {
               "$ref": "#/components/schemas/EggSession"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EggTypeCreateRequest": {
+        "type": "object",
+        "properties": {
+          "eggName": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
             "nullable": true
           }
         },

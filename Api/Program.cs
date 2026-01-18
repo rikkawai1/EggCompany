@@ -1,3 +1,4 @@
+using Application.Mappings;
 using Application.Services;
 using Infrastructure.DBContext;
 using Infrastructure.Repositories;
@@ -15,10 +16,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<EggDbContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
+///SERVICES
 builder.Services.AddScoped<EggTypeService>();
 
+
 builder.Services.AddScoped<EggTypeRepository>();
+
+///MAPPER
+builder.Services.AddAutoMapper(typeof(EggTypeProfile).Assembly);
+
 
 var app = builder.Build();
 

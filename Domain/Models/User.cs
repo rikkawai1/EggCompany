@@ -1,31 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Domain.Models;
 
-public partial class User
+//[Index("email", Name = "users_email_key", IsUnique = true)]
+//[Index("username", Name = "users_username_key", IsUnique = true)]
+public partial class user
 {
-    public int UserId { get; set; }
+    [Key]
+    public Guid id { get; set; }
 
-    public string? Username { get; set; }
+    [StringLength(50)]
+    public string username { get; set; } = null!;
 
-    public string? FirstName { get; set; }
+    [StringLength(255)]
+    public string password_hash { get; set; } = null!;
 
-    public string? LastName { get; set; }
+    [StringLength(100)]
+    public string? full_name { get; set; }
 
-    public string? Email { get; set; }
+    [StringLength(100)]
+    public string? email { get; set; }
 
-    public string? Phone { get; set; }
+    [StringLength(20)]
+    public string? phone { get; set; }
 
-    public int? RoleId { get; set; }
+    [StringLength(20)]
+    public string? status { get; set; }
 
-    public virtual ICollection<AiConversationalSession> AiConversationalSessions { get; set; } = new List<AiConversationalSession>();
+    [Column(TypeName = "timestamp without time zone")]
+    public DateTime? created_at { get; set; }
 
-    public virtual ICollection<DeviceOwnership> DeviceOwnerships { get; set; } = new List<DeviceOwnership>();
+    [Column(TypeName = "timestamp without time zone")]
+    public DateTime? updated_at { get; set; }
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    [InverseProperty("user")]
+    public virtual ICollection<audit_log> audit_logs { get; set; } = new List<audit_log>();
 
-    public virtual Role? Role { get; set; }
+    [InverseProperty("technician")]
+    public virtual ICollection<maintenance_ticket> maintenance_tickets { get; set; } = new List<maintenance_ticket>();
 
-    public virtual ICollection<UserActivityLog> UserActivityLogs { get; set; } = new List<UserActivityLog>();
+    [ForeignKey("user_id")]
+    [InverseProperty("users")]
+    public virtual ICollection<role> roles { get; set; } = new List<role>();
 }

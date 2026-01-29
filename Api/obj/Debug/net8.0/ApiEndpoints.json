@@ -1,15 +1,15 @@
 [
   {
-    "ContainingType": "Api.Controllers.EggTypeController",
+    "ContainingType": "Api.Controllers.ConfigController",
     "Method": "GetAll",
-    "RelativePath": "api/EggType",
+    "RelativePath": "api/Config",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Domain.Models.EggType, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[Domain.Models.config, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -20,22 +20,22 @@
     ]
   },
   {
-    "ContainingType": "Api.Controllers.EggTypeController",
+    "ContainingType": "Api.Controllers.ConfigController",
     "Method": "Create",
-    "RelativePath": "api/EggType",
+    "RelativePath": "api/Config",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Application.DTOs.EggTypeCreateRequest",
+        "Type": "Domain.Models.config",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Models.EggType",
+        "Type": "Domain.Models.config",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -46,22 +46,22 @@
     ]
   },
   {
-    "ContainingType": "Api.Controllers.EggTypeController",
+    "ContainingType": "Api.Controllers.ConfigController",
     "Method": "Update",
-    "RelativePath": "api/EggType",
+    "RelativePath": "api/Config",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Models.EggType",
+        "Type": "Domain.Models.config",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Models.EggType",
+        "Type": "Domain.Models.config",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -72,19 +72,45 @@
     ]
   },
   {
-    "ContainingType": "Api.Controllers.EggTypeController",
+    "ContainingType": "Api.Controllers.ConfigController",
     "Method": "Delete",
-    "RelativePath": "api/EggType",
+    "RelativePath": "api/Config",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Models.EggType",
+        "Type": "Domain.Models.config",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Api.Controllers.ConfigController",
+    "Method": "GetById",
+    "RelativePath": "api/Config/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Models.config",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

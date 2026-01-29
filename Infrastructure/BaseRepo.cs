@@ -8,16 +8,11 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-
-
     public class BaseRepo<T> where T : class
     {
-        private EggDbContext _context;
-        public BaseRepo()
-        {
-            _context = new EggDbContext();
-        }
-        public BaseRepo(EggDbContext context)
+        private IncubatorDbContext _context;
+
+        public BaseRepo(IncubatorDbContext context)
         {
             _context = context;
         }

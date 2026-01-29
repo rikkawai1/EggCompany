@@ -5,10 +5,10 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/EggType": {
+    "/api/Config": {
       "get": {
         "tags": [
-          "EggType"
+          "Config"
         ],
         "responses": {
           "200": {
@@ -18,7 +18,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EggType"
+                    "$ref": "#/components/schemas/config"
                   }
                 }
               },
@@ -26,7 +26,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EggType"
+                    "$ref": "#/components/schemas/config"
                   }
                 }
               },
@@ -34,7 +34,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EggType"
+                    "$ref": "#/components/schemas/config"
                   }
                 }
               }
@@ -44,23 +44,23 @@
       },
       "post": {
         "tags": [
-          "EggType"
+          "Config"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EggTypeCreateRequest"
+                "$ref": "#/components/schemas/config"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/EggTypeCreateRequest"
+                "$ref": "#/components/schemas/config"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/EggTypeCreateRequest"
+                "$ref": "#/components/schemas/config"
               }
             }
           }
@@ -71,17 +71,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EggType"
+                  "$ref": "#/components/schemas/config"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EggType"
+                  "$ref": "#/components/schemas/config"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EggType"
+                  "$ref": "#/components/schemas/config"
                 }
               }
             }
@@ -90,23 +90,23 @@
       },
       "put": {
         "tags": [
-          "EggType"
+          "Config"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EggType"
+                "$ref": "#/components/schemas/config"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/EggType"
+                "$ref": "#/components/schemas/config"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/EggType"
+                "$ref": "#/components/schemas/config"
               }
             }
           }
@@ -117,17 +117,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EggType"
+                  "$ref": "#/components/schemas/config"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EggType"
+                  "$ref": "#/components/schemas/config"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EggType"
+                  "$ref": "#/components/schemas/config"
                 }
               }
             }
@@ -136,23 +136,23 @@
       },
       "delete": {
         "tags": [
-          "EggType"
+          "Config"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EggType"
+                "$ref": "#/components/schemas/config"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/EggType"
+                "$ref": "#/components/schemas/config"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/EggType"
+                "$ref": "#/components/schemas/config"
               }
             }
           }
@@ -163,46 +163,205 @@
           }
         }
       }
+    },
+    "/api/Config/{id}": {
+      "get": {
+        "tags": [
+          "Config"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/config"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/config"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/config"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "EggSession": {
+      "alert": {
         "type": "object",
         "properties": {
-          "sessionId": {
-            "type": "integer",
-            "format": "int32"
+          "id": {
+            "type": "string",
+            "format": "uuid"
           },
-          "eggTypeId": {
-            "type": "integer",
-            "format": "int32",
+          "incubator_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "model_id": {
+            "type": "string",
+            "format": "uuid",
             "nullable": true
           },
-          "startTime": {
+          "config_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "severity": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
-          "endTime": {
+          "resolved_at": {
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
-          "eggType": {
-            "$ref": "#/components/schemas/EggType"
+          "config": {
+            "$ref": "#/components/schemas/config"
+          },
+          "incubator": {
+            "$ref": "#/components/schemas/incubator"
+          },
+          "model": {
+            "$ref": "#/components/schemas/ml_model"
           }
         },
         "additionalProperties": false
       },
-      "EggType": {
+      "anomaly_rule": {
         "type": "object",
         "properties": {
-          "eggTypeId": {
-            "type": "integer",
-            "format": "int32"
+          "id": {
+            "type": "string",
+            "format": "uuid"
           },
-          "eggName": {
+          "model_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "config_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "min_value": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "max_value": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "config": {
+            "$ref": "#/components/schemas/config"
+          },
+          "model": {
+            "$ref": "#/components/schemas/incubator_model"
+          }
+        },
+        "additionalProperties": false
+      },
+      "audit_log": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "action": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "entity": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "entity_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "user": {
+            "$ref": "#/components/schemas/user"
+          }
+        },
+        "additionalProperties": false
+      },
+      "config": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "unit": {
+            "maxLength": 20,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           },
@@ -210,26 +369,959 @@
             "type": "string",
             "nullable": true
           },
-          "eggSessions": {
+          "alerts": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/EggSession"
+              "$ref": "#/components/schemas/alert"
+            },
+            "nullable": true
+          },
+          "anomaly_rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/anomaly_rule"
+            },
+            "nullable": true
+          },
+          "control_devices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/control_device"
+            },
+            "nullable": true
+          },
+          "incubator_config_instances": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/incubator_config_instance"
+            },
+            "nullable": true
+          },
+          "incubator_model_configs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/incubator_model_config"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "EggTypeCreateRequest": {
+      "control_board_type": {
         "type": "object",
         "properties": {
-          "eggName": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "maxLength": 2000,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "control_devices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/control_device"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "control_device": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "masterboard_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "control_board_types_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "config_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "hardware_code": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "pin_number": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "state": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "config": {
+            "$ref": "#/components/schemas/config"
+          },
+          "control_board_types": {
+            "$ref": "#/components/schemas/control_board_type"
+          },
+          "masterboard": {
+            "$ref": "#/components/schemas/masterboard"
+          }
+        },
+        "additionalProperties": false
+      },
+      "customer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "incubators": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/incubator"
+            },
+            "nullable": true
+          },
+          "sales_orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sales_order"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "incubator": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "serial_number": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "qr_code": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "model_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "customer_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "activated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "alerts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/alert"
+            },
+            "nullable": true
+          },
+          "customer": {
+            "$ref": "#/components/schemas/customer"
+          },
+          "incubator_cameras": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/incubator_camera"
+            },
+            "nullable": true
+          },
+          "incubator_config_instances": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/incubator_config_instance"
+            },
+            "nullable": true
+          },
+          "maintenance_tickets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/maintenance_ticket"
+            },
+            "nullable": true
+          },
+          "masterboard": {
+            "$ref": "#/components/schemas/masterboard"
+          },
+          "model": {
+            "$ref": "#/components/schemas/incubator_model"
+          },
+          "operation_histories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/operation_history"
+            },
+            "nullable": true
+          },
+          "sales_order_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sales_order_item"
+            },
+            "nullable": true
+          },
+          "warranty": {
+            "$ref": "#/components/schemas/warranty"
+          }
+        },
+        "additionalProperties": false
+      },
+      "incubator_camera": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "incubator_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "stream_url": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "incubator": {
+            "$ref": "#/components/schemas/incubator"
+          }
+        },
+        "additionalProperties": false
+      },
+      "incubator_config_instance": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "incubator_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "config_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "instance_index": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "target_value": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "min_value": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "max_value": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "unit": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "config": {
+            "$ref": "#/components/schemas/config"
+          },
+          "incubator": {
+            "$ref": "#/components/schemas/incubator"
+          },
+          "sensors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sensor"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "incubator_model": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "model_code": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "maxLength": 100,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "description": {
             "type": "string",
             "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "anomaly_rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/anomaly_rule"
+            },
+            "nullable": true
+          },
+          "incubator_model_configs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/incubator_model_config"
+            },
+            "nullable": true
+          },
+          "incubators": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/incubator"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "incubator_model_config": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "model_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "config_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "required": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "config": {
+            "$ref": "#/components/schemas/config"
+          },
+          "model": {
+            "$ref": "#/components/schemas/incubator_model"
+          }
+        },
+        "additionalProperties": false
+      },
+      "maintenance_log": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ticket_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "ticket": {
+            "$ref": "#/components/schemas/maintenance_ticket"
+          }
+        },
+        "additionalProperties": false
+      },
+      "maintenance_ticket": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "incubator_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "technician_id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "status": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "closed_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "incubator": {
+            "$ref": "#/components/schemas/incubator"
+          },
+          "maintenance_logs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/maintenance_log"
+            },
+            "nullable": true
+          },
+          "technician": {
+            "$ref": "#/components/schemas/user"
+          }
+        },
+        "additionalProperties": false
+      },
+      "masterboard": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "incubator_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "serial_number": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "firmware_version": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "mac_address": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "ip_address": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "last_seen_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "control_devices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/control_device"
+            },
+            "nullable": true
+          },
+          "incubator": {
+            "$ref": "#/components/schemas/incubator"
+          },
+          "sensors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sensor"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ml_model": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "version": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "config": {
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "alerts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/alert"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "operation_history": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "incubator_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "mode_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "end_time": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "incubator": {
+            "$ref": "#/components/schemas/incubator"
+          },
+          "mode": {
+            "$ref": "#/components/schemas/operation_mode"
+          }
+        },
+        "additionalProperties": false
+      },
+      "operation_mode": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "operation_histories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/operation_history"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "role": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "code": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/user"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "sales_order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "order_code": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "customer_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "order_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "status": {
+            "maxLength": 30,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "customer": {
+            "$ref": "#/components/schemas/customer"
+          },
+          "sales_order_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sales_order_item"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "sales_order_item": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "order_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "incubator_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "incubator": {
+            "$ref": "#/components/schemas/incubator"
+          },
+          "order": {
+            "$ref": "#/components/schemas/sales_order"
+          }
+        },
+        "additionalProperties": false
+      },
+      "sensor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "masterboard_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "config_instance_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "hardware_code": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "pin_number": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "config_instance": {
+            "$ref": "#/components/schemas/incubator_config_instance"
+          },
+          "masterboard": {
+            "$ref": "#/components/schemas/masterboard"
+          },
+          "sensor_readings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sensor_reading"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "sensor_reading": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sensor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "value": {
+            "type": "number",
+            "format": "double"
+          },
+          "recorded_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "sensor": {
+            "$ref": "#/components/schemas/sensor"
+          }
+        },
+        "additionalProperties": false
+      },
+      "user": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "username": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "password_hash": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "full_name": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "audit_logs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/audit_log"
+            },
+            "nullable": true
+          },
+          "maintenance_tickets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/maintenance_ticket"
+            },
+            "nullable": true
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/role"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "warranty": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "incubator_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "status": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "incubator": {
+            "$ref": "#/components/schemas/incubator"
           }
         },
         "additionalProperties": false

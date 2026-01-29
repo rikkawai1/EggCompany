@@ -1,13 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Domain.Models;
 
-public partial class Role
+//[Index("code", Name = "roles_code_key", IsUnique = true)]
+public partial class role
 {
-    public int RoleId { get; set; }
+    [Key]
+    public Guid id { get; set; }
 
-    public string RoleName { get; set; } = null!;
+    [StringLength(30)]
+    public string code { get; set; } = null!;
 
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+    [StringLength(50)]
+    public string name { get; set; } = null!;
+
+    [ForeignKey("role_id")]
+    [InverseProperty("roles")]
+    public virtual ICollection<user> users { get; set; } = new List<user>();
 }

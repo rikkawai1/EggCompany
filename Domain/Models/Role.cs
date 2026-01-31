@@ -10,7 +10,7 @@ namespace Domain.Models;
 public partial class role
 {
     [Key]
-    public Guid id { get; set; }
+    public short id { get; set; }
 
     [StringLength(30)]
     public string code { get; set; } = null!;

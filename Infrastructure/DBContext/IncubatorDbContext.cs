@@ -310,7 +310,7 @@ public partial class IncubatorDbContext : DbContext
         {
             entity.HasKey(e => e.id).HasName("roles_pkey");
 
-            entity.Property(e => e.id).HasDefaultValueSql("uuid_generate_v4()");
+            entity.Property(e => e.id).ValueGeneratedNever();
         });
 
         modelBuilder.Entity<sales_order>(entity =>

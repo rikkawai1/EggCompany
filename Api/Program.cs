@@ -18,12 +18,26 @@ options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")
 
 /////SERVICES
 builder.Services.AddScoped<ConfigService>();
+builder.Services.AddScoped<IncubatorService>();
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<SalesOrderService>();
+builder.Services.AddScoped<AIService>();
+builder.Services.AddScoped<IncubatorModelService>();
+builder.Services.AddScoped<WarrantyService>();
+builder.Services.AddScoped<CustomerService>();
 
-
+/////REPOSITORIES
 builder.Services.AddScoped<ConfigRepository>();
+builder.Services.AddScoped<IncubatorRepository>();
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<SalesOrderRepository>();
+builder.Services.AddScoped<MaintenanceTicketRepository>();
+builder.Services.AddScoped<WarrantyRepository>();
+builder.Services.AddScoped<IncubatorModelRepository>();
+builder.Services.AddScoped<CustomerRepository>();
 
 ///MAPPER
-//builder.Services.AddAutoMapper(typeof(EggTypeProfile).Assembly);
+builder.Services.AddAutoMapper(typeof(Application.Mappings.MappingProfile).Assembly);
 
 
 var app = builder.Build();

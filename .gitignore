@@ -1,0 +1,58 @@
+# Visual Studio and VSCode
+.vs/
+.vscode/
+*.sln.user
+*.user
+.DS_Store
+
+# Build results
+bin/
+obj/
+out/
+*.exe
+*.dll
+*.pdb
+*.o
+*.so
+*.dylib
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# User-specific files
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local history for Visual Studio
+.localhistory/
+
+# BeatPulse telemetry for Visual Studio Code
+.vscode/extensions.json
+
+# Entity Framework
+*.db
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Rider
+.idea/
+*.sln.iml
+
+# MacOS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
